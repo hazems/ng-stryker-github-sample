@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-stryker-github-sample'`, () => {
+  it(`should have as title 'GitHub Google Projects'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ng-stryker-github-sample');
+    expect(app.title).toEqual('GitHub Google Projects');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ng-stryker-github-sample!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to GitHub Google Projects!');
   });
 });

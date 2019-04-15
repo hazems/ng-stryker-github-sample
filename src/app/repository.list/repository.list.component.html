@@ -1,0 +1,14 @@
+<table *ngIf="projectList">
+  <th>Name</th>
+  <th>Description</th>
+  <th>Open Issues</th>
+  <th>Watchers</th>
+  <tr *ngFor="let project of projectList">
+    <td><a href="{{project.html_url}}" target="_blank">{{project.name}}</a></td>
+    <td>{{project.description}}</td>
+    <td>{{project.open_issues}}</td>
+    <td>{{project.watchers}}</td>
+  </tr>
+</table>
+
+<div *ngIf="!projectList">No Data Available in the current time</div>
