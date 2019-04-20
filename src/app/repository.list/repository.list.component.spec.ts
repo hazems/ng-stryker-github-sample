@@ -17,6 +17,9 @@ describe('RepositoryListComponent', () => {
             100,
             200)
   ];
+  let errorObservable = new Observable(subscriber => {
+    subscriber.error("Some error!!!");
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -38,12 +41,11 @@ describe('RepositoryListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#repo-list-container')).toBeTruthy();  
   });
 
   it('shows list of github projects for Google when there is any', () => {
-    let getRepoList = spyOn(repositoryListService, 'getProjectList').and.returnValue(
-      of(testData)
-    );
+    spyOn(repositoryListService, 'getProjectList').and.returnValue(of(testData));
 
     component.ngOnInit();
     fixture.detectChanges();
@@ -52,15 +54,33 @@ describe('RepositoryListComponent', () => {
   });
 
   it('shows nothing when there is an error', () => {
-    let getRepoList = spyOn(repositoryListService, 'getProjectList').and.returnValue(
-        new Observable(subscriber => {
-          subscriber.error("Some error!!!");
-        })
-    );
+    spyOn(repositoryListService, 'getProjectList').and.returnValue(new Observable(subscriber => {
+      subscriber.error("Some error!!!");
+    }));
 
     component.ngOnInit();
     fixture.detectChanges();
 
-    expect(component.projectList).not.toBeTruthy();
+    expect(component.projectList).toBeNull();
   });
+
+  // Extended cases ...
+  it('ngOnInit should add subscriptions', () => {
+    spyOn(repositoryListService, 'getProjectList').and.returnValue(of(testData));
+    spyOn(component.subscription, 'add');
+
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    expect(component.subscription.add).toHaveBeenCalled();
+  });
+
+  it('ngOnDestroy should remove subscriptions', () => {
+    spyOn(component.subscription, 'unsubscribe');
+
+    component.ngOnDestroy();
+    fixture.detectChanges();
+
+    expect(component.subscription.unsubscribe).toHaveBeenCalled();
+  });  
 });

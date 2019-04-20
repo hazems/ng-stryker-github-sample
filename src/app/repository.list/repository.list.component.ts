@@ -11,18 +11,25 @@ import { Subscription } from 'rxjs';
 export class RepositoryListComponent implements OnInit {
   constructor(private repositoryService:RepositoryService) { }
 
-  private subscription = new Subscription();
+  subscription = new Subscription();
   projectList: Repository[];
 
   ngOnInit() {
     this.subscription.add(this.repositoryService.getProjectList().subscribe(
-        projectList => this.projectList = projectList,
-        error => console.log(error)
+        projectList => this.onSuccess(projectList),
+        error => this.onError(error)
     )); 
   }
 
-  public ngOnDestroy(): void {
-    console.log("unsubscribing ...")
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  onSuccess(projectList) {
+    this.projectList = projectList;
+  }
+
+  onError(error): void {
+    this.projectList = null;
   }
 }
