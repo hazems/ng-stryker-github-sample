@@ -6,7 +6,11 @@ module.exports = function(config) {
       "src/app/repository.list/*.ts",
       "!src/app/repository.list/*.spec.ts"
     ],
-    mutator: "typescript",
+    mutator: {
+      name: "typescript",
+      excludedMutations: []
+      //excludedMutations: ["StringLiteral", "ArrayLiteral"], // You can exclude some mutations if you wish to
+    },
     testRunner: "karma",
     karma: {
       configFile: "src/karma.conf.js",
