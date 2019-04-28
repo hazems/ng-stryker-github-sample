@@ -3,7 +3,8 @@
 module.exports = function(config) {
   config.set({
     mutate: [
-      "src/app/repository.list/repository.list.component.ts"
+      "src/app/repository.list/*.ts",
+      "!src/app/repository.list/*.spec.ts"
     ],
     mutator: "typescript",
     testRunner: "karma",
