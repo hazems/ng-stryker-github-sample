@@ -1,8 +1,18 @@
-<html><head><script src="mutation-test-elements.js"></script></head>
-<body><img class="stryker-image" alt="Stryker" src="stryker-80x80.png" style="position: fixed; right: 0; top: 0; z-index: 10">
-<mutation-test-report-app title-postfix="Stryker">Your browser doesn't support 
-<a href="https://caniuse.com/#search=custom%20elements">custom elements</a>
-. Please use a latest version of an evergreen browser (Firefox, Chrome, Safari, Opera, etc).</mutation-test-report-app>
-<script>document.querySelector('mutation-test-report-app').report = 
-{"files":{"/Users/hazemsaleh/Desktop/FullStack NYC Conference/Demos/ng-stryker-github-sample/src/app/repository.list/repository.list.component.ts":{"language":"typescript","mutants":[{"id":"0","location":{"end":{"column":2,"line":10},"start":{"column":12,"line":6}},"mutatorName":"ObjectLiteral","replacement":"{}","status":"Killed"},{"id":"1","location":{"end":{"column":34,"line":7},"start":{"column":13,"line":7}},"mutatorName":"StringLiteral","replacement":"\"\"","status":"Killed"},{"id":"2","location":{"end":{"column":50,"line":8},"start":{"column":16,"line":8}},"mutatorName":"StringLiteral","replacement":"\"\"","status":"RuntimeError"},{"id":"3","location":{"end":{"column":49,"line":9},"start":{"column":14,"line":9}},"mutatorName":"ArrayLiteral","replacement":"[]","status":"Survived"},{"id":"4","location":{"end":{"column":48,"line":9},"start":{"column":15,"line":9}},"mutatorName":"StringLiteral","replacement":"\"\"","status":"RuntimeError"},{"id":"5","location":{"end":{"column":4,"line":22},"start":{"column":14,"line":17}},"mutatorName":"Block","replacement":"{}","status":"Killed"},{"id":"6","location":{"end":{"column":51,"line":19},"start":{"column":9,"line":19}},"mutatorName":"ArrowFunction","replacement":"() => undefined","status":"Killed"},{"id":"7","location":{"end":{"column":37,"line":20},"start":{"column":9,"line":20}},"mutatorName":"ArrowFunction","replacement":"() => undefined","status":"Killed"},{"id":"8","location":{"end":{"column":4,"line":26},"start":{"column":23,"line":24}},"mutatorName":"Block","replacement":"{}","status":"Killed"},{"id":"9","location":{"end":{"column":4,"line":30},"start":{"column":26,"line":28}},"mutatorName":"Block","replacement":"{}","status":"Killed"},{"id":"10","location":{"end":{"column":35,"line":29},"start":{"column":5,"line":29}},"mutatorName":"ConditionalExpression","replacement":"false","status":"Killed"},{"id":"11","location":{"end":{"column":35,"line":29},"start":{"column":5,"line":29}},"mutatorName":"ConditionalExpression","replacement":"true","status":"Killed"},{"id":"12","location":{"end":{"column":4,"line":34},"start":{"column":24,"line":32}},"mutatorName":"Block","replacement":"{}","status":"Killed"},{"id":"13","location":{"end":{"column":28,"line":33},"start":{"column":5,"line":33}},"mutatorName":"ConditionalExpression","replacement":"false","status":"Killed"},{"id":"14","location":{"end":{"column":28,"line":33},"start":{"column":5,"line":33}},"mutatorName":"ConditionalExpression","replacement":"true","status":"Killed"}],"source":"import { Component, OnInit } from '@angular/core';\nimport { Repository } from '../model/repository';\nimport { RepositoryService } from '../repository.service';\nimport { Subscription } from 'rxjs';\n\n@Component({\n  selector: 'app-repository-list',\n  templateUrl: './repository.list.component.html',\n  styleUrls: ['./repository.list.component.css']\n})\nexport class RepositoryListComponent implements OnInit {\n  constructor(private repositoryService:RepositoryService) { }\n\n  subscription = new Subscription();\n  projectList: Repository[];\n\n  ngOnInit() {\n    this.subscription.add(this.repositoryService.getProjectList().subscribe(\n        projectList => this.onSuccess(projectList),\n        error => this.onError(error)\n    )); \n  }\n\n  ngOnDestroy(): void {\n    this.subscription.unsubscribe();\n  }\n\n  onSuccess(projectList) {\n    this.projectList = projectList;\n  }\n\n  onError(error): void {\n    this.projectList = null;\n  }\n}"}},"schemaVersion":"1.0","thresholds":{"break":null,"high":80,"low":60}}
-;</script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="mutation-test-elements.js"></script>
+</head>
+
+<body>
+    <img class="stryker-image" alt="Stryker" src="stryker-80x80.png"
+        style="position: fixed; right: 0; top: 0; z-index: 10">
+    <mutation-test-report-app titlePostfix="Stryker">
+        Your browser doesn't support <a href="https://caniuse.com/#search=custom%20elements">custom elements</a>.
+        Please use a latest version of an evergreen browser (Firefox, Chrome, Safari, Opera, etc).
+    </mutation-test-report-app>
+    <script src="bind-mutation-test-report.js"></script>
+</body>
+
+</html>

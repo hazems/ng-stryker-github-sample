@@ -21,7 +21,7 @@ export class RepositoryListComponent implements OnInit {
     )); 
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
@@ -29,7 +29,7 @@ export class RepositoryListComponent implements OnInit {
     this.projectList = projectList;
   }
 
-  onError(error): void {
+  onError(error) {
     this.projectList = null;
   }
 }
