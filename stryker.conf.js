@@ -9,7 +9,7 @@ module.exports = function(config) {
     mutator: {
       name: "typescript",
       excludedMutations: []
-      //excludedMutations: ["StringLiteral", "ArrayLiteral"], // You can exclude some mutations if you wish to
+      //excludedMutations: ["Block"], // You can exclude some mutations if you wish to
     },
     testRunner: "karma",
     karma: {

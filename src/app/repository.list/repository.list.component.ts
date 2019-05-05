@@ -16,9 +16,9 @@ export class RepositoryListComponent implements OnInit {
 
   ngOnInit() {
     this.subscription.add(this.repositoryService.getProjectList().subscribe(
-        projectList => this.onSuccess(projectList),
-        error => this.onError(error)
-    )); 
+      projectList => this.onSuccess(projectList),
+      error => this.onError(error)
+    ));   
   }
 
   ngOnDestroy() {
